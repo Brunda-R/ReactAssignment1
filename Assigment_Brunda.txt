@@ -1,0 +1,439 @@
+Brunda-Assignment
+
+1] how to filter the array data in javascript react.
+A.	App.jsx
+import React from "react"
+class App extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={
+            persons : [ "Alice", "Bob", "Steve"]
+        };
+        this.filterNamesHavinge=this.filterNamesHavinge.bind(this);
+    }
+    filterNamesHavinge(){
+        return (
+            this.state.persons
+            .filter(person => person.includes('e') )
+            .map((person,index) => <li key={index}>{person}</li>)
+        );
+    }
+    render(){
+        return(
+            <div>
+                Names that include e are <br></br>
+                <ul>
+                    {this.filterNamesHavinge()}
+                </ul>
+            </div>
+        );
+    }
+}
+
+export default App;
+
+main.js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App.jsx'
+ReactDOM.render( <App/> ,
+    document.getElementById("app")
+);
+
+index.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>React Assignment</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="index.js"></script>
+</body>
+</html>
+
+2] how get parent element javascript
+A.	using this.parentElement or this.parentNode
+	example is as follows:
+	<!DOCTYPE html>
+<html>
+<head>
+	<title>Parent Element</title>
+	
+</head>
+<body>
+	<div style="background-color: Red;width:200px;height:200px;">
+		<input type="button" id="button" onclick="this.parentElement.style.backgroundColor = 'Yellow';" value="change color">
+	</div>
+</body>
+</html>
+
+3] add all elements in array javascript
+A.	add.js
+	var array=[1,44,56,234,22,3,42];
+	var result = array.reduce((accumulator,item)=>accumulator+item);
+	console.log(result);
+
+4] add an element to an array javascript
+A. add.js
+	var array = [1,"hello",3,"world",23];
+	array.push(44);
+	array[array.length]="user";
+	console.log(array);
+
+5] add 10 seconds to date javascript
+A.	var today=new Date();
+	console.log(today);
+	today.setSeconds(today.getSeconds()+10);
+	console.log(today);
+
+6] add 10px to width js
+A.	<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		function addWidth(){
+			var w = document.getElementById("mydiv").style.width;
+			console.log("Before "+w);
+			w=parseInt(w.slice(0,w.length-2))+10;
+			document.getElementById("mydiv").style.width=w+'px';
+			console.log("After "+document.getElementById("mydiv").style.width);
+		}
+	</script>
+</head>
+<body>
+	<div style="width:100px;height:100px;background-color:red" id="mydiv">
+		<input type="button" onclick="addWidth()" value="change width" name="">
+	</div>
+
+</body>
+</html>
+
+7] add 2 class names react
+A.	App.jsx
+import React from "react"
+class App extends React.Component{
+    render(){
+        return(
+            <div>
+                <h1>From class App</h1>
+                <App1/>
+            </div>
+        );
+    }
+}
+
+class App1 extends React.Component{
+    render(){
+        return(
+            <h2>From Class App1</h2>
+        );
+    }
+}
+export default App;
+
+main.js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App.jsx'
+ReactDOM.render( <App/> ,
+    document.getElementById("app")
+);
+
+index.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>React Assignments</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="index.js"></script>
+</body>
+</html>
+
+8] add 2 for hours in date timestamp js
+A.	var today=new Date();
+document.getElementById("one").innerHTML = today;
+today.setHours(today.getHours()+2);
+document.getElementById("two").innerHTML = today;
+
+9] add 7 days in date using jquery
+A.	<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#display").click(function(){
+   var mydate = new Date($("#mydate").val());
+   mydate.setDate(mydate.getDate()+7);
+   alert((mydate.getMonth()+1)+'/'+mydate.getDate()+'/'+mydate.getFullYear());
+  });
+});
+
+</script>
+</head>
+<body>
+<input type="date" id="mydate">
+<input type="button" id="display" value="add7days">
+</body>
+</html>
+
+10] add a route to a button in react
+A.	import React from 'react';
+import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom';
+
+const About = () => (
+    <p>This is about us</p>
+);
+export default class App extends React.Component{
+    render(){
+        return (
+            <div>
+            <Router>
+                <Link to="/about"><input type="button" value="About us"></input></Link>
+                <Route path="/about" component={About}></Route>
+            </Router>
+            </div>
+        );
+    }
+}
+
+11] add a slash to string in javascript
+A.	var str = "Hello world";
+str +="/";
+console.log(str);
+
+12] how to run a filter having object [] in reactjs
+A.	App.jsx
+import React from "react"
+class App extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={
+            persons : [{
+                id:1,
+                name:"John",
+                age:15
+            },{
+                id:2,
+                name:"Alice",
+                age:30
+            },{
+                id:3,
+                name:"Bob",
+                age:35
+            }]
+        };
+        this.filterNamesByAge=this.filterNamesByAge.bind(this);
+    }
+    filterNamesByAge(){
+        return (
+            this.state.persons
+            .filter(person => person.age >=18 )
+            .map((person,index) => <li key={index}>{person.name}</li>)
+        );
+    }
+    render(){
+        return(
+            <div>
+                Persons whose age is greater than 18 are <br></br>
+                <ul>
+                    {this.filterNamesByAge()}
+                </ul>
+            </div>
+        );
+    }
+}
+
+export default App;
+
+main.js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App.jsx'
+ReactDOM.render( <App/> ,
+    document.getElementById("app")
+);
+
+index.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>React Assignments</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="index.js"></script>
+</body>
+</html>
+
+13] how to use filter when returning jsx
+A.	App.jsx
+import React from "react"
+class App extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={
+            persons : [ "Alice", "Bob", "Steve"]
+        };
+        this.filterNamesHavinge=this.filterNamesHavinge.bind(this);
+    }
+    filterNamesHavinge(){
+        return (
+            this.state.persons
+            .filter(person => person.includes('e') )
+            .map((person,index) => <li key={index}>{person}</li>)
+        );
+    }
+    render(){
+        return(
+            <div>
+                Names that include e are <br></br>
+                <ul>
+                    {this.filterNamesHavinge()}
+                </ul>
+            </div>
+        );
+    }
+}
+
+export default App;
+
+main.js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App.jsx'
+ReactDOM.render( <App/> ,
+    document.getElementById("app")
+);
+
+index.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>React Assignment</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="index.js"></script>
+</body>
+</html>
+
+14] Render JSX
+A. JSX is rendered using render method from ReactDOM
+	import React from 'react'
+	import ReactDOM from 'react-dom'
+	const element = <h1>Hello user</h1>
+	ReactDOM.render(element,document.getElementById("app"))
+
+15] How to Use JavaScript in JSX
+A.	We can put Javascript expression in curly braces inside a JSX element
+	import React from 'react'
+	import ReactDOM from 'react-dom'
+	const name = "John"
+	const element = <h1>Hello {name}</h1>
+	ReactDOM.render(element,document.getElementById("app"))
+
+16] How to Use array in JSX
+A.	map function is used to iterate the array elements and insert into JSX element
+	import React from 'react'
+	import ReactDOM from 'react-dom'
+	const names = ["John","Jack","Bob","Alice"]
+	const App()=> return {
+	<div>
+		{names}.map((name,index)=>
+					<li key={index}>{name}</li>);
+	</div>
+	};
+	ReactDOM.render(<App/>,document.getElementById("app"));
+
+17] How to define a component
+A.	Components are the building blocks of the React. A component is a class or function that takes inputs as props and return a React element.
+
+18] What is the use of this.props.children
+A.	this.props.children can be used on the components that are generic boxes and don't know their children ahead of time.
+	In other words, it is used to display whatever you enclosed in opening and closing tags, when invoking the component
+
+19] Finding a DOM node
+A.	Refs provide a way to access DOM nodes or react elements created in the render method.
+	import React from 'react';
+import ReactDOM from 'react-dom';
+
+export default class CustomTextInput extends React.Component {
+    constructor(props) {
+      super(props);
+      this.textInput = React.createRef();
+      this.focusTextInput = this.focusTextInput.bind(this);
+    }
+  
+    focusTextInput() {
+      this.textInput.current.focus();
+    }
+  
+    render() {
+      return (
+        <div>
+        <input
+          type="text"
+          ref={this.textInput} />
+        <input
+          type="button"
+          value="Focus the text input"
+          onClick={this.focusTextInput}
+        />
+      </div>
+    );
+  }
+}
+
+20] Write example to use this.state
+A.	import React from 'react'
+	import ReactDOM from 'react-dom'
+	class App extends React.Component{
+		constructor(){
+		this.state={
+			names : ["John","Jack","Bob","Alice"]
+		}
+		}
+		render(){
+		return {
+			<div>
+				{this.state.names}.map((name,index)=>
+							<li key={index}>{name}</li>);
+			</div>
+			};
+		}
+	}
+
+	ReactDOM.render(<App/>,document.getElementById("app"));
+
+21] Component Lifecycle
+A.	Each component in React has a lifecycle which you can monitor and manipulate during its three main phases.
+	The three phases are: Mounting, Updating, and Unmounting.
+
+	Mounting
+	Mounting means putting elements into the DOM.
+	React has four built-in methods that gets called, in this order, when mounting a component:
+	componentWillMount()
+	constructor()
+	getDerivedStateFromProps()
+	render()
+	componentDidMount()
+
+	Updating
+	The next phase in the lifecycle is when a component is updated.
+	A component is updated whenever there is a change in the component's state or props.
+	React has five built-in methods that gets called, in this order, when a component is updated:
+	getDerivedStateFromProps()
+	shouldComponentUpdate()
+	render()
+	getSnapshotBeforeUpdate()
+	componentDidUpdate()
+
+	Unmounting
+	The next phase in the lifecycle is when a component is removed from the DOM, or unmounting as React likes to call it.
+	React has only one built-in method that gets called when a component is unmounted:
+	componentWillUnmount()
